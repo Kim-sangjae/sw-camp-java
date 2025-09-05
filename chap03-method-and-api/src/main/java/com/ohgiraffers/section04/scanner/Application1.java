@@ -38,7 +38,7 @@ public class Application1 {
         * 라는 런타임 에러 발생. (index는 0부터 시작)
         * */
         System.out.print("아무 문자나 입력 : ");
-        char ch = scanner.nextLine().charAt(4);
+        char ch = scanner.nextLine().charAt(0);
         System.out.println("첫 번째 문자 : " + ch);
     }
 }
