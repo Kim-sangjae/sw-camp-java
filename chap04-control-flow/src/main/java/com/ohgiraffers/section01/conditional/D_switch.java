@@ -32,4 +32,32 @@ public class D_switch {
 
         System.out.println(first + " " + op + " " + second + " = " + result);
     }
+
+    /* java 14부터 적용 된 switch문 사용에 대한 흐름을 이해하고 적용할 수 있다. */
+    public void improveSwitchStatement() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("첫 번째 정수 : ");
+        int first = sc.nextInt();
+        System.out.print("두 번째 정수 : ");
+        int second = sc.nextInt();
+        System.out.print("연산 기호 입력 : ");
+        char op = sc.next().charAt(0);
+
+        int result = switch (op) {
+            case '+' -> {
+                /* 실행해야하는 명령이 하나 이상인 경우 블럭 처리 */
+                System.out.println("더하기 연산자 실행");
+                /* 실행 후 반환 값에 yield 키워드 작성하여 명시적 리턴 */
+                yield first + second;
+            }
+            case '-' -> first - second;
+            case 'x','*' -> first * second;
+            case '/' -> first / second;
+            case '%' -> first % second;
+            /* 반드시 default가 작성 되어야 함 */
+            default -> 0;
+        };
+        System.out.println(first + " " + op + " " + second + " = " + result);
+
+    }
 }
