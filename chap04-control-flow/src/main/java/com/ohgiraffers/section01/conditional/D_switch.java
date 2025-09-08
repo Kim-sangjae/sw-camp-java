@@ -14,7 +14,8 @@ public class D_switch {
         char op = sc.next().charAt(0);
         int result = 0;
 
-        /* 조건식(true, false)가 아니라 조건 값(정수,문자,문자열)이 들어감 */
+        /* 조건식(true, false)가 아니라 조건 값(정수,문자,문자열)이 들어감
+        * 조건 값이 일치하는 case를 찾아 실행 후 break를 만나면 블럭을 빠져나감 */
         switch (op) {
             case '+' : result = first + second; break;
             case '-' : result = first - second; break;
