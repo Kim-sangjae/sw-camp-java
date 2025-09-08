@@ -12,6 +12,9 @@ public class Application {
         C_ifElseIf c = new C_ifElseIf();
 //        c.testIfElseIfStatement();
 //        c.testNestedIfElseIfStatement();
-        c.testImproveIfElseIfStatement();
+//        c.testImproveIfElseIfStatement();
+
+        D_switch d = new D_switch();
+        d.testSimpleSwitchStatement();
     }
 }
