@@ -15,6 +15,7 @@ public class Application {
 //        c.testImproveIfElseIfStatement();
 
         D_switch d = new D_switch();
-        d.testSimpleSwitchStatement();
+//        d.testSimpleSwitchStatement();
+        d.improveSwitchStatement();
     }
 }
