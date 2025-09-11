@@ -43,7 +43,7 @@ public class Application {
             System.out.print("계속 추가할 겁니까 ? (y/n) : ");
             String c = sc.next();
 
-            if(c.equals("n")) break;
+            if(c.equals("n")||c.equals("N")) break;
 
             maxStudent++;
 
