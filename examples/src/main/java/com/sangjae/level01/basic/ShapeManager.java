@@ -43,11 +43,12 @@ public class ShapeManager {
                 for (int j = i; j < length-1; j++) {
                     shapes[j] = shapes[j + 1];
                 }
-                shapes[length - 1] = null;
-                break;
-            }
 
-        }
+                shapes[length - 1] = null;
+
+            }//if
+
+        }//for1
         /* 배열에서 전달 된 Shape를 찾아 제거. 단, 제거 된 인덱스가 비어 있지 않도록 뒤에 있는 객체를 앞으로 당김. */
     }
 
