@@ -1,4 +1,4 @@
-package com.sangjae.sectoin03.filterstream;
+package com.sangjae.section03.filterstream;
 
 import java.io.*;
 
