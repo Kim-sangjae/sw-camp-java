@@ -10,11 +10,12 @@ public class Application {
         MessageSender emailSender = new EmailSender();
         MessageSender smsSender = new SMSSender();
 
+
         NotificationService ns1 = new NotificationService(emailSender);
         NotificationService ns2 = new NotificationService(smsSender);
 
-        ns1.sendNotification("이메일로 공지 발송");
-        ns2.sendNotification("sms로 공지 발송");
+        ns1.sendNotification("이메일");
+        ns2.sendNotification("문자");
 
 
     }
