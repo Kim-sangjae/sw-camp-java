@@ -51,23 +51,23 @@ public class UserService {
     }
 
     //
-    public void joinUser(User user) {
-        if (isDuplicateUserId(user.getUserId())) {
+    public void joinUser(String id , String pw , String phone ,UserRole userRole) {
+        if (isDuplicateUserId(id)) {
             throw new IllegalArgumentException("이미 존재하는 아이디입니다.");
         }
 
-        if(isDuplicateUserPhoneNumber(user.getPhoneNumber())){
+        if(isDuplicateUserPhoneNumber(phone)){
             throw new IllegalArgumentException("이미 존재하는 번호 입니다");
         }
 
-        if(validatePhone(user.getPhoneNumber())){
+        if(validatePhone(phone)){
             throw new IllegalArgumentException("전화번호는 '-' 를 제외한 11자리를 입력해주세요");
         }
 
-        if (validatePw(user.getUserPassword())) {
+        if (validatePw(pw)) {
             throw new IllegalArgumentException("비밀번호는 1~8자리여야 합니다.");
         }
-        userRepository.insertUser(user);
+        userRepository.insertUser(id,pw,phone,userRole);
     }
 
     //

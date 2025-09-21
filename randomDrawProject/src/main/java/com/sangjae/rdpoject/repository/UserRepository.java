@@ -1,6 +1,9 @@
 package com.sangjae.rdpoject.repository;
 
+import com.sangjae.rdpoject.domain.Category;
+import com.sangjae.rdpoject.domain.DrawItem;
 import com.sangjae.rdpoject.domain.User;
+import com.sangjae.rdpoject.domain.UserRole;
 import com.sangjae.rdpoject.repository.storage.UserStorage;
 
 import java.util.List;
@@ -8,18 +11,34 @@ import java.util.List;
 public class UserRepository {
     private final UserStorage userStorage;
     private final List<User> userList;
+    private int nextUserCode = 1;
 
 
     public UserRepository(UserStorage userStorage) {
         this.userStorage = userStorage;
         this.userList = userStorage.loadUsers();
+
+        if (!userList.isEmpty()) {
+            int maxNum = userList.stream()
+                    .mapToInt(User::getUserCode)
+                    .max().getAsInt();
+
+
+            this.nextUserCode = maxNum + 1;
+        }
     }
 
 
+    public void insertUser(String userId , String userPw , String userPhone , UserRole userRole){
+        User newUser = null;
 
-    public void insertUser(User user){
-        userList.add(user);
+        if(userRole == UserRole.USER) {
+           newUser = new User(nextUserCode++, userId, userPw, userPhone);
+        } else if (userRole == UserRole.ADMIN) {
+           newUser = new User(nextUserCode++,userId,userPw,userPhone,UserRole.ADMIN,0);
+        }
 
+        userList.add(newUser);
         userStorage.saveUsers(userList);
     }
 

@@ -3,6 +3,7 @@ package com.sangjae.rdpoject.main_ui;
 import com.sangjae.rdpoject.domain.Category;
 import com.sangjae.rdpoject.domain.DrawItem;
 import com.sangjae.rdpoject.domain.User;
+import com.sangjae.rdpoject.domain.UserRole;
 import com.sangjae.rdpoject.repository.DrawHistoryRepository;
 import com.sangjae.rdpoject.repository.storage.FileDrawHistoryStorage;
 import com.sangjae.rdpoject.repository.storage.FileDrawStorage;
@@ -124,9 +125,7 @@ public class UserController {
         String phone = scanner.nextLine();
 
         try {
-            int nextUserNo = userService.findAllUser().size() + 1;
-            User newUser = new User(nextUserNo, id, pwd, phone);
-            userService.joinUser(newUser);
+            userService.joinUser(id,pwd,phone, USER);
             System.out.println("회원 가입 성공: " + id);
         } catch (IllegalArgumentException e) {
             System.out.println("회원 가입 실패: " + e.getMessage());
@@ -382,9 +381,7 @@ public class UserController {
 
 
         try {
-            int nextUserNo = userService.findAllUser().size() + 1;
-            User newAdmin = new User(nextUserNo, id, pwd, phone ,ADMIN,0);
-            userService.joinUser(newAdmin);
+            userService.joinUser(id,pwd,phone,ADMIN);
             System.out.println("관리자 가입 성공: " + id);
         } catch (IllegalArgumentException e) {
             System.out.println("관리자 가입 실패: " + e.getMessage());
