@@ -32,18 +32,18 @@ class UserServiceTest {
     @Test
     @DisplayName("정상 유저 추가")
     void joinUser() {
-        // 존재사는 유저 실패
-//        String id = "홍길동";
-//        String pw = "1234";
-//        String phone = "01012341234";
-//        UserRole userRole = UserRole.USER;
+         //존재사는 유저 실패
+        String id = "홍길동";
+        String pw = "1234";
+        String phone = "01012341234";
+        UserRole userRole = UserRole.USER;
 
         // 새로운 유저아이디 , 번호 성공
-        String id1 = "길길동";
-        String pw1 = "1234";
-        String phone1 = "01011111111";
-        UserRole userRole1 = UserRole.USER;
-        userService.joinUser(id1,pw1,phone1,userRole1);
+//        String id1 = "길길동";
+//        String pw1 = "1234";
+//        String phone1 = "01011111111";
+//        UserRole userRole1 = UserRole.USER;
+        userService.joinUser(id,pw,phone,userRole);
     }
 
     @Test
@@ -74,24 +74,31 @@ class UserServiceTest {
 
 
     // 얘 왜 안되는지 모르겠음....
-//    @Test
-//    @DisplayName("로그인 실패: 비밀번호가 일치하지 않습니다.")
-//    void loginUser() {
-//
-//
-//        IllegalArgumentException ex = assertThrows(
-//                IllegalArgumentException.class,
-//                () -> userService.loginUser("유관순" , "1234324")
-//        );
-//
-//        assertTrue(ex.getMessage().contains("로그인 실패: 비밀번호가 일치하지 않습니다."));
-//
-//    }
+    // 로그인 실패 : 까지 안나오는거였네요..
+    @Test
+    @DisplayName("로그인 실패: 비밀번호가 일치하지 않습니다.")
+    void loginUser() {
+
+
+        IllegalArgumentException ex = assertThrows(
+                IllegalArgumentException.class,
+                () -> userService.loginUser("유관순" , "1234324")
+        );
+
+        System.out.println(ex.getMessage());
+        assertTrue(ex.getMessage().contains("비밀번호가 일치하지 않습니다."));
+
+
+    }
 
 
     @Test
     @DisplayName("정상 삭제")
     void deleteUser() {
+
+
+
+
         User delUSer = userService.findByPhonNum("01012341234");
         userService.deleteUser(delUSer);
     }
